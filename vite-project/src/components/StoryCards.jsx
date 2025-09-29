@@ -1,10 +1,10 @@
-import React from 'react';
+import placeholder from "../assets/images/placeholder.png";
 
 export default function StoryCard({ story }) {
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
       <img
-        src={story.image || '/src/assets/images/placeholder.jpg'}
+        src={story.image || placeholder}
         alt={story.title}
         className="w-full h-48 object-cover"
       />
