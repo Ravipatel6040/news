@@ -5,6 +5,8 @@ import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NewsFeedPage from './pages/NewsFeedPage';
+import About from "./pages/About"
+import Contact from "./pages/Contact"
 
 // Role-based dashboards
 import DashboardReader from "./pages/dashboard/DashboardReader";
@@ -21,6 +23,8 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/explore" element={<NewsFeedPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
 
         {/* Role-based dashboards */}
         <Route path="/dashboard/reader" element={<DashboardReader />} />

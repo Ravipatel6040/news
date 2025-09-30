@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { FiChevronDown } from 'react-icons/fi';
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); // Mobile menu
+  const [categoriesOpen, setCategoriesOpen] = useState(false); // Desktop dropdown click toggle
 
   const activeClass = 'text-indigo-600 font-semibold';
 
@@ -18,19 +20,25 @@ export default function Navbar() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-              {/* <NavLink to="/" className={({isActive}) => isActive ? activeClass : 'hover:text-indigo-600 transition'}>Home</NavLink> */}
-              <NavLink to="/explore" className={({isActive}) => isActive ? activeClass : 'hover:text-indigo-600 transition'}>Explore</NavLink>
-              <NavLink to="/about" className={({isActive}) => isActive ? activeClass : 'hover:text-indigo-600 transition'}>About</NavLink>
-              <NavLink to="/contact" className={({isActive}) => isActive ? activeClass : 'hover:text-indigo-600 transition'}>Contact</NavLink>
-              <div className="relative group">
-                <button className="flex items-center gap-1 hover:text-indigo-600 transition">
-                  Categories ▾
+              <NavLink to="/explore" className={({ isActive }) => isActive ? activeClass : 'hover:text-indigo-600 transition'}>Explore</NavLink>
+              <NavLink to="/about" className={({ isActive }) => isActive ? activeClass : 'hover:text-indigo-600 transition'}>About</NavLink>
+              <NavLink to="/contact" className={({ isActive }) => isActive ? activeClass : 'hover:text-indigo-600 transition'}>Contact</NavLink>
+
+              {/* Desktop Categories Dropdown */}
+              <div className="relative">
+                <button
+                  onClick={() => setCategoriesOpen(!categoriesOpen)}
+                  className="flex items-center gap-1 hover:text-indigo-600 transition cursor-pointer"
+                >
+                  Categories <FiChevronDown />
                 </button>
-                <div className="absolute left-0 mt-2 w-44 bg-white border rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition pointer-events-none group-hover:pointer-events-auto">
-                  <NavLink to="/category/local" className="block px-4 py-2 text-sm hover:bg-gray-100">Local</NavLink>
-                  <NavLink to="/category/national" className="block px-4 py-2 text-sm hover:bg-gray-100">National</NavLink>
-                  <NavLink to="/category/politics" className="block px-4 py-2 text-sm hover:bg-gray-100">Politics</NavLink>
-                </div>
+                {categoriesOpen && (
+                  <div className="absolute left-0 mt-2 w-44 bg-white border rounded-lg shadow-lg z-50">
+                    <NavLink to="/category/local" className="block px-4 py-2 text-sm hover:bg-gray-100">Local</NavLink>
+                    <NavLink to="/category/national" className="block px-4 py-2 text-sm hover:bg-gray-100">National</NavLink>
+                    <NavLink to="/category/politics" className="block px-4 py-2 text-sm hover:bg-gray-100">Politics</NavLink>
+                  </div>
+                )}
               </div>
             </nav>
           </div>
@@ -82,7 +90,24 @@ export default function Navbar() {
             <NavLink to="/trending" className="block px-2 py-2 hover:bg-gray-50 rounded">Explore</NavLink>
             <NavLink to="/about" className="block px-2 py-2 hover:bg-gray-50 rounded">About</NavLink>
             <NavLink to="/contact" className="block px-2 py-2 hover:bg-gray-50 rounded">Contact</NavLink>
-            <NavLink to="/categories" className="block px-2 py-2 hover:bg-gray-50 rounded">Categories</NavLink>
+
+            {/* Mobile Categories Dropdown */}
+            <div>
+              <button
+                onClick={() => setCategoriesOpen(!categoriesOpen)}
+                className="flex justify-between w-full px-2 py-2 hover:bg-gray-50 rounded items-center"
+              >
+                Categories <FiChevronDown />
+              </button>
+              {categoriesOpen && (
+                <div className="pl-4 mt-1 space-y-1">
+                  <NavLink to="/category/local" className="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Local</NavLink>
+                  <NavLink to="/category/national" className="block px-4 py-2 text-sm hover:bg-gray-100 rounded">National</NavLink>
+                  <NavLink to="/category/politics" className="block px-4 py-2 text-sm hover:bg-gray-100 rounded">Politics</NavLink>
+                </div>
+              )}
+            </div>
+
             <NavLink to="/login" className="block px-2 py-2 text-indigo-600 font-semibold">Login</NavLink>
             <NavLink to="/join-reporter" className="block px-2 py-2 font-semibold bg-indigo-600 text-white rounded text-center">Join as Reporter</NavLink>
           </div>

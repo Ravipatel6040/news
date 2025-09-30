@@ -10,12 +10,15 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="hidden lg:block w-64 space-y-6">
-      <div className="bg-white p-4 shadow rounded-md">
-        <h3 className="font-semibold text-gray-800 mb-3">Recommended</h3>
-        <ul className="space-y-2 text-gray-600">
+    <div className="hidden lg:block w-72 space-y-6">
+      <div className="backdrop-blur-xl bg-white/70 border border-gray-200 rounded-2xl p-5 shadow-lg">
+        <h3 className="font-semibold text-gray-900 mb-4 text-lg">Recommended Topics</h3>
+        <ul className="space-y-3 text-gray-700">
           {recommended.map((item, idx) => (
-            <li key={idx} className="hover:text-indigo-600 cursor-pointer">
+            <li
+              key={idx}
+              className="hover:text-indigo-600 cursor-pointer transition transform hover:translate-x-1 hover:font-medium"
+            >
               #{item}
             </li>
           ))}

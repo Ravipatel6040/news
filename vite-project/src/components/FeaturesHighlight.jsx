@@ -1,46 +1,34 @@
 import React from 'react';
 
-const features = [
-  { title: 'Ad-free reading', desc: 'Subscribe to read without interruptions.', icon: '📖', color: 'from-pink-400 to-red-400' },
-  { title: 'Earn by reporting', desc: 'Report accurate news and earn via licensing.', icon: '💰', color: 'from-green-400 to-teal-400' },
-  { title: 'License content easily', desc: 'Publishers can quickly license verified stories.', icon: '📄', color: 'from-yellow-400 to-orange-400' },
-];
-
 export default function FeaturesHighlight() {
   return (
-    <section className="bg-gradient-to-r from-purple-50 via-pink-50 to-yellow-50 rounded-3xl p-10 sm:p-16 my-28 relative overflow-hidden">
-      <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 text-center mb-16">
-        Why Choose Us
+    <section className="pt-16 lg:px-20 md:px-10 px-6 bg-gray-50 text-gray-900">
+      <h2 className="text-4xl md:text-5xl font-bold text-center">
+        Why <span className="text-blue-600">Choose Us</span>
       </h2>
+      <p className="text-center text-gray-600 mt-4 max-w-2xl mx-auto">
+        We deliver trusted, fast, and accurate news, keeping you informed with every important update.
+      </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-        {features.map((f, i) => (
-          <div
-            key={i}
-            className={`flex flex-col items-start gap-5 p-8 rounded-3xl shadow-lg hover:shadow-2xl transform hover:-translate-y-3 hover:scale-105 transition duration-300 bg-gradient-to-r ${f.color}`}
-          >
-            <div className="h-16 w-16 rounded-full flex items-center justify-center text-3xl bg-white shadow-md">
-              {f.icon}
-            </div>
-            <h4 className="text-2xl font-bold text-white">{f.title}</h4>
-            <p className="text-white text-base sm:text-lg">{f.desc}</p>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-16 flex flex-col sm:flex-row gap-6 justify-center">
-        <a
-          href="#"
-          className="inline-block px-8 py-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white rounded-xl font-semibold shadow-lg hover:scale-105 transform transition"
-        >
-          Join Now
-        </a>
-        <a
-          href="#"
-          className="inline-block px-8 py-4 border-2 border-indigo-500 text-indigo-500 rounded-xl font-semibold hover:bg-indigo-50 transition"
-        >
-          Learn More
-        </a>
+      <div className="lg:flex lg:gap-8 mt-12">
+        <div className="lg:pt-2 pt-7 bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex-1">
+          <h3 className="text-center font-semibold text-xl text-red-600">WE ARE PASSIONATE</h3>
+          <p className="pt-3 text-center text-gray-700">
+            Our team is dedicated to reporting real stories that matter. We focus on accurate, meaningful news coverage for our readers.
+          </p>
+        </div>
+        <div className="lg:pt-2 pt-7 bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex-1 mt-6 lg:mt-0">
+          <h3 className="text-center font-semibold text-xl text-green-600">HONEST AND DEPENDABLE</h3>
+          <p className="pt-3 text-center text-gray-700">
+            Transparency and integrity are at the core of our reporting. You can rely on us to deliver facts without bias or misinformation.
+          </p>
+        </div>
+        <div className="lg:pt-2 pt-7 bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex-1 mt-6 lg:mt-0">
+          <h3 className="text-center font-semibold text-xl text-blue-600">WE ARE ALWAYS IMPROVING</h3>
+          <p className="pt-3 text-center text-gray-700">
+            We continuously update our tools and methods to ensure you have access to the most reliable and timely news updates.
+          </p>
+        </div>
       </div>
     </section>
   );
