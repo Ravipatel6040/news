@@ -1,7 +1,10 @@
 import React from "react";
 
+
 export default function FAQ() {
   return (
+    <>
+     
     <div className="py-4 bg-white">
       <div className="max-w-screen-md mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-between">
 
@@ -116,5 +119,6 @@ export default function FAQ() {
         </div>
       </div>
     </div>
+     </>
   );
 }
