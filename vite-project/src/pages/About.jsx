@@ -1,6 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function About() {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="sm:flex items-center max-w-screen-xl mx-auto p-6">
@@ -8,7 +11,7 @@ export default function About() {
           <div className="image object-center text-center">
             <img
               src="https://i.imgur.com/WbQnbas.png"
-              alt="About Us"
+              alt={t("aboutUsImageAlt")}
               className="mx-auto"
             />
           </div>
@@ -16,15 +19,13 @@ export default function About() {
         <div className="sm:w-1/2 p-5">
           <div className="text">
             <span className="text-gray-500 border-b-2 border-indigo-600 uppercase">
-              About us
+              {t("aboutUs")}
             </span>
             <h2 className="my-4 font-bold text-3xl sm:text-4xl">
-              About <span className="text-indigo-600">Our Company</span>
+              {t("aboutTitle")} <span className="text-indigo-600">{t("aboutCompany")}</span>
             </h2>
             <p className="text-gray-700">
-               At Our Company, we are committed to delivering innovative solutions that empower businesses and individuals alike. 
-  Our team of experts combines creativity and technology to transform ideas into impactful results, ensuring excellence 
-  and growth at every step.
+              {t("aboutDescription")}
             </p>
           </div>
         </div>
@@ -34,7 +35,7 @@ export default function About() {
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl xl:text-5xl font-pj">
-              Our Investors & Board of Directors
+              {t("investorsBoardTitle")}
             </h2>
           </div>
 
@@ -44,13 +45,13 @@ export default function About() {
                 <img
                   className="object-cover w-32 h-32 mx-auto rounded-full lg:w-44 lg:h-44 grayscale filter"
                   src={`https://cdn.rareblocks.xyz/collection/clarity/images/team/1/team-member-${i}.png`}
-                  alt=""
+                  alt={t("teamMember")}
                 />
                 <p className="mt-5 text-lg font-bold text-gray-900 sm:text-xl sm:mt-8 font-pj">
-                  Jerome Bell
+                  {t("teamMemberName")}
                 </p>
                 <p className="mt-2 text-base font-normal text-gray-600 font-pj">
-                  Co founder, Chairman, Executive Director
+                  {t("teamMemberRole")}
                 </p>
               </div>
             ))}
@@ -86,7 +87,7 @@ export default function About() {
                 <img
                   className="w-auto mx-auto h-11"
                   src={`https://cdn.rareblocks.xyz/collection/clarity/images/team/1/${logo}`}
-                  alt=""
+                  alt={t("partnerLogo")}
                 />
               </div>
             ))}
@@ -97,11 +98,13 @@ export default function About() {
       {/* Mini Footer */}
       <footer className="bg-gray-900 text-white py-6 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-sm">&copy; {new Date().getFullYear()} Our Company. All rights reserved.</p>
+          <p className="text-sm">
+            &copy; {new Date().getFullYear()} {t("companyName")}. {t("allRightsReserved")}
+          </p>
           <div className="flex space-x-4 mt-2 sm:mt-0">
-            <a href="#" className="hover:text-indigo-500 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-indigo-500 transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-indigo-500 transition-colors">Contact</a>
+            <a href="#" className="hover:text-indigo-500 transition-colors">{t("privacyPolicy")}</a>
+            <a href="#" className="hover:text-indigo-500 transition-colors">{t("termsOfService")}</a>
+            <a href="#" className="hover:text-indigo-500 transition-colors">{t("contactUs")}</a>
           </div>
         </div>
       </footer>

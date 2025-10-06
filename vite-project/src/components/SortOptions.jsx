@@ -1,12 +1,17 @@
 import React from 'react';
-import { ChevronDownIcon } from '@heroicons/react/24/solid'; // Optional: heroicons for dropdown icon
+import { ChevronDownIcon } from '@heroicons/react/24/solid';
+import { useTranslation } from 'react-i18next';
 
 export default function SortOptions({ sort, setSort }) {
+  const { t } = useTranslation(); // i18next hook
+
   return (
     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
       
       {/* Title */}
-      <span className="text-gray-700 font-semibold text-lg">Sort News By:</span>
+      <span className="text-gray-700 font-semibold text-lg">
+        {t('sortNewsBy')} {/* Multi-language */}
+      </span>
 
       {/* Dropdown */}
       <div className="relative w-full md:w-60">
@@ -15,10 +20,10 @@ export default function SortOptions({ sort, setSort }) {
           value={sort}
           onChange={(e) => setSort(e.target.value)}
         >
-          <option value="latest">Latest</option>
-          <option value="trending">Trending</option>
-          <option value="verified">Verified</option>
-          <option value="paid">Paid</option>
+          <option value="latest">{t('latest')}</option>
+          <option value="trending">{t('trending')}</option>
+          <option value="verified">{t('verified')}</option>
+          <option value="paid">{t('paid')}</option>
         </select>
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
           <ChevronDownIcon className="h-5 w-5 text-gray-400" />

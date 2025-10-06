@@ -1,7 +1,10 @@
 import placeholder from "../assets/images/placeholder.png";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function StoryCard({ story }) {
+  const { t } = useTranslation();
+
   return (
     <motion.div
       whileHover={{ scale: 1.05, y: -5 }}
@@ -15,7 +18,7 @@ export default function StoryCard({ story }) {
           className="w-full h-48 object-cover"
         />
         <span className="absolute top-3 right-3 bg-indigo-600 text-white text-xs px-3 py-1 rounded-full shadow-md">
-          {story.verified ? "Verified" : "Unverified"}
+          {story.verified ? t("verified") : t("unverified")}
         </span>
       </div>
       <div className="p-5">

@@ -1,0 +1,224 @@
+{
+  "home": "Home",
+  "explore": "Explore",
+  "about": "About",
+  "contact": "Contact",
+  "categories": "Categories",
+  "local": "Local",
+  "national": "National",
+  "politics": "Politics",
+  "search": "Search news...",
+  "signup": "Sign Up",
+  "login": "Login",
+  "joinReporter": "Join as Reporter",
+
+
+
+ 
+  "slides": [
+    {
+      "heading": "Read, Report & License News — Built for every citizen",
+      "desc": "Join a community-driven marketplace for trustworthy hyperlocal, national, and investigative journalism.",
+      "btnReadNews": "Read News",
+      "btnJoinReporter": "Join as Reporter"
+    },
+    {
+      "heading": "Empowering Reporters, Informing Citizens",
+      "desc": "Reporters can earn, readers can trust, and media houses can license easily.",
+      "btnReadNews": "Read News",
+      "btnJoinReporter": "Join as Reporter"
+    }
+  ],
+
+
+  
+  "bigStoryCategory": "Election",
+  "bigStoryTitle": "Revenge of the Never Trumpers",
+  "bigStoryDesc": "Meet the Republican dissidents fighting to push Donald Trump out of office—and reclaim their party",
+  "story1Title": "Trump Steps Back Into Coronavirus Spotlight",
+  "story2Title": "How Trump's Mistakes Became Biden's Big Breaks",
+  "story3Title": "Survey: Many Americans 'Dissatisfied' With U.S.",
+  "story4Title": "How Trump's Mistakes Became Biden's Big Breaks",
+  "story5Title": "Survey: Many Americans 'Dissatisfied' With U.S.",
+  "story6Title": "Trump Steps Back Into Coronavirus Spotlight",
+  "ourInsights": "Our Insights",
+  "newsFeeds": "News Feeds",
+  "byAdmin": "By Admin",
+  "siteNews": "Site News",
+  "latestUpdatesTitle": "Our Latest Website Updates",
+  "latestUpdatesDesc": "Stay up-to-date with the latest features and news from our website. We bring you updates, improvements, and important announcements regularly to keep you informed.",
+  "sideNews1Title": "New Blog Post: How to Navigate Our Site",
+  "sideNews1Desc": "A detailed guide on how to get the most out of our website and its features.",
+  "sideNews2Title": "Feature Update: User Dashboard Improvements",
+  "sideNews2Desc": "Our dashboard is now faster and more intuitive to give you a better experience.",
+  "sideNews3Title": "Security Notice: Keep Your Account Safe",
+  "sideNews3Desc": "Tips and guidelines to ensure your account and data remain secure.",
+
+  "browseByCategory": "Browse by Category",
+  "viewAll": "View all",
+  "categoryLocal": "Local",
+  "categoryNational": "National",
+  "categoryPolitics": "Politics",
+  "categorySports": "Sports",
+  "categoryBusiness": "Business",
+  "categoryTechnology": "Technology",
+  "categoryEntertainment": "Entertainment",
+
+  "latestUpdates": "Latest Updates",
+  "reporter1": "Reporter 1",
+  "reporter2": "Reporter 2",
+  "reporter3": "Reporter 3",
+  "reporter4": "Reporter 4",
+  "editor": "Editor",
+  "breakingNews": "Breaking News",
+  "latestHeadlines": "Latest Headlines Around the World",
+  "ctaDescription": "Stay informed with real-time news updates, trending stories, and expert insights. Click below to explore all the latest articles.",
+  "readNews": "Read News",
+
+  "whyChoose": "Why",
+  "chooseUs": "Choose Us",
+  "featuresDescription": "We deliver trusted, fast, and accurate news, keeping you informed with every important update.",
+  "feature1Title": "WE ARE PASSIONATE",
+  "feature1Desc": "Our team is dedicated to reporting real stories that matter. We focus on accurate, meaningful news coverage for our readers.",
+  "feature2Title": "HONEST AND DEPENDABLE",
+  "feature2Desc": "Transparency and integrity are at the core of our reporting. You can rely on us to deliver facts without bias or misinformation.",
+  "feature3Title": "WE ARE ALWAYS IMPROVING",
+  "feature3Desc": "We continuously update our tools and methods to ensure you have access to the most reliable and timely news updates.",
+
+  "faqTitle": "F.A.Q",
+  "faqHeading1": "Frequently Asked",
+  "faqHeading2": "Questions",
+  "faq1Question": "What could possibly be your first question?",
+  "faq1Answer": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
+  "faq2Question": "How does your service work?",
+  "faq2Answer": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explanation about how the service works goes here.",
+  "faq3Question": "Can I cancel anytime?",
+  "faq3Answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Yes, you can cancel anytime with no extra charges.",
+
+  "companyName": "Company",
+  "companyDescription": "Building innovative solutions for the modern world.",
+  "quickLinks": "Quick Links",
+  "aboutUs": "About Us",
+  "services": "Services",
+  "pricing": "Pricing",
+  "blog": "Blog",
+  "webDevelopment": "Web Development",
+  "mobileApps": "Mobile Apps",
+  "uiuxDesign": "UI/UX Design",
+  "digitalMarketing": "Digital Marketing",
+  "cloudSolutions": "Cloud Solutions",
+  "contactUs": "Contact Us",
+  "addressLine1": "123 Business Ave",
+  "addressLine2": "San Francisco, CA 94107",
+  "email": "Email",
+  "phone": "Phone",
+  "copyright": "© 2025 Company. All rights reserved.",
+  "privacyPolicy": "Privacy Policy",
+  "termsOfService": "Terms of Service",
+  "cookies": "Cookies",
+
+  "topHighlight": {
+    "category": "Fashion",
+    "title": "The perfect summer sweater that you can wear!",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+    "category2": "Fashion",
+    "title2": "The perfect summer sweater that you can wear!",
+    "description2": "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+  },
+  "smallCards": {
+    "date": "Aug 18",
+    "snippet": "Cristiano Ronaldo of Juventus FC looks dejected during the..."
+  },
+  "stories": {
+    "indiaCricket": {
+      "title": "India Wins Cricket Match!",
+      "snippet": "India defeated Australia in a thrilling match..."
+    }
+  },
+
+
+
+  
+
+
+  "allLanguages": "All Languages",
+  "english": "English",
+  "hindi": "Hindi",
+  "allLocations": "All Locations",
+  "delhi": "Delhi",
+  "mumbai": "Mumbai",
+  "allCategories": "All Categories",
+
+  "sports": "Sports",
+  "business": "Business",
+  "clearFilters": "Clear Filters",
+
+
+
+
+
+
+ 
+  "sortNewsBy": "Sort News By:",
+  "latest": "Latest",
+  "trending": "Trending",
+  "verified": "Verified",
+  "paid": "Paid",
+
+
+
+
+  "recommendedTopics": "Recommended Topics",
+
+  "elections2025": "Elections 2025",
+  "cricket": "Cricket",
+  "technologyUpdates": "Technology Updates",
+  "stockMarket": "Stock Market",
+
+
+
+
+
+  "unverified": "Unverified",
+
+
+
+
+ 
+  "aboutTitle": "About",
+  "aboutCompany": "Our Company",
+  "aboutDescription": "At Our Company, we are committed to delivering innovative solutions that empower businesses and individuals alike. Our team of experts combines creativity and technology to transform ideas into impactful results, ensuring excellence and growth at every step.",
+  "investorsBoardTitle": "Our Investors & Board of Directors",
+  "teamMember": "Team Member",
+  "teamMemberName": "Jerome Bell",
+  "teamMemberRole": "Co founder, Chairman, Executive Director",
+  "partnerLogo": "Partner Logo",
+  
+
+
+
+
+
+  "contactHeadline": "Stay Updated with Latest Headlines",
+  "contactSubHeadline": "from around the world!",
+  "contactDescription": "Breaking news, in-depth reports, and expert analysis to keep you informed on global events as they happen.",
+  "readLatestNews": "Read Latest News",
+  "contactHeroAlt": "Awesome hero page image",
+  "contactSectionTitle": "Contact",
+  "getInTouch": "Get in Touch",
+  "contactSectionDesc": "In hac habitasse platea dictumst",
+  "contactIntro": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos...",
+  "ourAddress": "Our Address",
+  "workingHoursWeekdays": "Monday - Friday: 08:00 - 17:00",
+  "workingHoursWeekend": "Saturday & Sunday: 08:00 - 12:00",
+  "formTitle": "Ready to Get Started?",
+  "yourName": "Your name",
+  "yourEmail": "Your email address",
+  "yourMessage": "Write your message...",
+  "sendMessage": "Send Message"
+
+
+  
+}
+
+

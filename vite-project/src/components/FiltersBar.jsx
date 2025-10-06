@@ -1,7 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 export default function FiltersBar({ filters, setFilters }) {
+  const { t } = useTranslation(); // i18next hook
+
   return (
     <motion.div
       whileHover={{ scale: 1.01 }}
@@ -13,9 +16,9 @@ export default function FiltersBar({ filters, setFilters }) {
         value={filters.language}
         onChange={(e) => setFilters({ ...filters, language: e.target.value })}
       >
-        <option value="">All Languages</option>
-        <option value="English">English</option>
-        <option value="Hindi">Hindi</option>
+        <option value="">{t('allLanguages')}</option>
+        <option value="English">{t('english')}</option>
+        <option value="Hindi">{t('hindi')}</option>
       </select>
 
       {/* Location */}
@@ -24,9 +27,9 @@ export default function FiltersBar({ filters, setFilters }) {
         value={filters.location}
         onChange={(e) => setFilters({ ...filters, location: e.target.value })}
       >
-        <option value="">All Locations</option>
-        <option value="Delhi">Delhi</option>
-        <option value="Mumbai">Mumbai</option>
+        <option value="">{t('allLocations')}</option>
+        <option value="Delhi">{t('delhi')}</option>
+        <option value="Mumbai">{t('mumbai')}</option>
       </select>
 
       {/* Category */}
@@ -35,10 +38,10 @@ export default function FiltersBar({ filters, setFilters }) {
         value={filters.category}
         onChange={(e) => setFilters({ ...filters, category: e.target.value })}
       >
-        <option value="">All Categories</option>
-        <option value="Politics">Politics</option>
-        <option value="Sports">Sports</option>
-        <option value="Business">Business</option>
+        <option value="">{t('allCategories')}</option>
+        <option value="Politics">{t('politics')}</option>
+        <option value="Sports">{t('sports')}</option>
+        <option value="Business">{t('business')}</option>
       </select>
 
       <motion.button
@@ -46,7 +49,7 @@ export default function FiltersBar({ filters, setFilters }) {
         onClick={() => setFilters({ language: '', location: '', category: '' })}
         className="bg-gradient-to-r from-pink-500 to-red-500 text-white px-4 py-2 rounded-lg shadow hover:opacity-90 transition"
       >
-        Clear Filters
+        {t('clearFilters')}
       </motion.button>
     </motion.div>
   );
