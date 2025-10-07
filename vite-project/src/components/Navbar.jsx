@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FiChevronDown } from 'react-icons/fi';
-import { useTranslation } from 'react-i18next'; // ✅ Import i18n hook
+import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
-  const { t } = useTranslation(); // ✅ Hook for translations
-  const [open, setOpen] = useState(false); // Mobile menu
-  const [categoriesOpen, setCategoriesOpen] = useState(false); // Desktop dropdown toggle
+  const { t } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const [categoriesOpen, setCategoriesOpen] = useState(false);
 
   const activeClass = 'text-indigo-600 font-semibold';
 
@@ -32,7 +32,12 @@ export default function Navbar() {
                 {t('contact')}
               </NavLink>
 
-              {/* Desktop Categories Dropdown */}
+              {/* ✅ Add News Link (Multi-language) */}
+              <NavLink to="/add-news" className={({ isActive }) => isActive ? activeClass : 'hover:text-indigo-600 transition'}>
+                {t('addNews')}
+              </NavLink>
+
+              {/* Categories Dropdown */}
               <div className="relative">
                 <button
                   onClick={() => setCategoriesOpen(!categoriesOpen)}
@@ -53,7 +58,6 @@ export default function Navbar() {
 
           {/* Right Side Actions */}
           <div className="flex items-center gap-4">
-            {/* Search Bar */}
             <div className="hidden md:block">
               <input
                 aria-label={t('search')}
@@ -62,12 +66,10 @@ export default function Navbar() {
               />
             </div>
 
-            {/* Signup Button */}
             <NavLink to="/signup" className="hidden md:inline-flex items-center px-4 py-2 text-sm font-medium text-indigo-600 border border-indigo-600 rounded-full hover:bg-indigo-50 transition">
               {t('signup')}
             </NavLink>
 
-            {/* Join as Reporter */}
             <NavLink to="/join-reporter" className="inline-flex items-center px-5 py-2 text-sm font-medium rounded-full bg-indigo-600 text-white hover:bg-indigo-700 transition">
               {t('joinReporter')}
             </NavLink>
@@ -78,20 +80,14 @@ export default function Navbar() {
               onClick={() => setOpen(!open)}
               aria-label="Toggle menu"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile Menu */}
         {open && (
           <div className="md:hidden py-3 space-y-2 border-t mt-2">
             <NavLink to="/" className="block px-2 py-2 hover:bg-gray-50 rounded">{t('home')}</NavLink>
@@ -99,7 +95,9 @@ export default function Navbar() {
             <NavLink to="/about" className="block px-2 py-2 hover:bg-gray-50 rounded">{t('about')}</NavLink>
             <NavLink to="/contact" className="block px-2 py-2 hover:bg-gray-50 rounded">{t('contact')}</NavLink>
 
-            {/* Mobile Categories Dropdown */}
+            {/* ✅ Add News Mobile */}
+            <NavLink to="/add-news" className="block px-2 py-2 hover:bg-gray-50 rounded">{t('addNews')}</NavLink>
+
             <div>
               <button
                 onClick={() => setCategoriesOpen(!categoriesOpen)}

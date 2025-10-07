@@ -3,6 +3,7 @@
   "explore": "खोजें",
   "about": "हमारे बारे में",
   "contact": "संपर्क करें",
+   "addNews": "समाचार जोड़ें",
   "categories": "श्रेणियाँ",
   "local": "स्थानीय",
   "national": "राष्ट्रीय",
@@ -12,6 +13,21 @@
   "login": "लॉगिन",
   "joinReporter": "रिपोर्टर बनें",
 
+
+
+
+    
+   "heading": "समाचार जोड़ें",
+    "title": "शीर्षक",
+    "titlePlaceholder": "समाचार शीर्षक दर्ज करें",
+    "description": "विवरण",
+    "descriptionPlaceholder": "समाचार विवरण दर्ज करें",
+    "image": "छवि",
+    "submit": "समाचार जोड़ें",
+    "uploading": "अपलोड हो रहा है...",
+    "alertRequired": "शीर्षक और विवरण आवश्यक हैं",
+    "alertSuccess": "समाचार सफलतापूर्वक जोड़ा गया!",
+    "alertError": "समाचार जोड़ने में त्रुटि",
 
  
   "slides": [

@@ -3,14 +3,33 @@
   "explore": "Explore",
   "about": "About",
   "contact": "Contact",
+   "addNews": "Add News",
   "categories": "Categories",
   "local": "Local",
+  
   "national": "National",
   "politics": "Politics",
   "search": "Search news...",
   "signup": "Sign Up",
   "login": "Login",
   "joinReporter": "Join as Reporter",
+
+
+
+
+  
+ "heading": "Add News",
+    "title": "Title",
+    "titlePlaceholder": "Enter news title",
+    "description": "Description",
+    "descriptionPlaceholder": "Enter news description",
+    "image": "Image",
+    "submit": "Add News",
+    "uploading": "Uploading...",
+    "alertRequired": "Title and Description are required",
+    "alertSuccess": "News added successfully!",
+    "alertError": "Error adding news",
+
 
 
 

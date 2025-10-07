@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { useTranslation } from "react-i18next"; // ✅ Import translation hook
+import { useTranslation } from "react-i18next"; // ✅ Translation hook
 
 // Components & Pages
 import Navbar from "./components/Navbar";
@@ -10,6 +10,12 @@ import Signup from "./pages/Signup";
 import NewsFeedPage from "./pages/NewsFeedPage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import AddNews from "./pages/AddNews"
+
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/dashboard/AdminDashboard";
+import ProtectedRoute from "./routes/ProtectedRoute"
+
 
 // Role-based dashboards
 import DashboardReader from "./pages/dashboard/DashboardReader";
@@ -69,14 +75,27 @@ export default function App() {
 
       {/* 🧭 Routes */}
       <Routes>
+        {/* Admin Routes */}
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route
+          path="/admin-dashboard"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* User Routes */}
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/explore" element={<NewsFeedPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/add-news" element={<AddNews />} />
 
-        {/* 🧩 Role-based dashboards */}
+        {/* Role-based dashboards */}
         <Route path="/dashboard/reader" element={<DashboardReader />} />
         <Route path="/dashboard/reporter" element={<DashboardReporter />} />
         <Route path="/dashboard/media" element={<DashboardMedia />} />
