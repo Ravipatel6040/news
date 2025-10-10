@@ -1,6 +1,6 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import { useTranslation } from "react-i18next"; // ✅ Translation hook
+import React, { useState, useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Components & Pages
 import Navbar from "./components/Navbar";
@@ -10,12 +10,10 @@ import Signup from "./pages/Signup";
 import NewsFeedPage from "./pages/NewsFeedPage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import AddNews from "./pages/AddNews"
+import AddNews from "./pages/AddNews";
 
-import AdminLogin from "./pages/AdminLogin";
-import AdminDashboard from "./pages/dashboard/AdminDashboard";
-import ProtectedRoute from "./routes/ProtectedRoute"
-
+import AdminLogin from "./pages/AdminLogin"; 
+import DashboardAdmin from "./pages/dashboard/DashboardAdmin";
 
 // Role-based dashboards
 import DashboardReader from "./pages/dashboard/DashboardReader";
@@ -23,24 +21,30 @@ import DashboardReporter from "./pages/dashboard/DashboardReporter";
 import DashboardMedia from "./pages/dashboard/DashboardMedia";
 
 export default function App() {
-  const { i18n } = useTranslation(); // ✅ Hook to switch language
+  const { i18n } = useTranslation();
 
-  // ✅ Function to change language dynamically
+  // ✅ Admin token state
+  const [adminToken, setAdminToken] = useState(
+    localStorage.getItem("adminToken") || ""
+  );
+
+  // Sync state if localStorage changes (login / logout)
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setAdminToken(localStorage.getItem("adminToken") || "");
+    };
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, []);
+
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
   };
 
   return (
     <>
-      {/* 🌐 Language Switch Buttons */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          padding: "10px 20px",
-          background: "#f5f5f5",
-        }}
-      >
+      {/* Language Switch Buttons */}
+      <div style={{ display: "flex", justifyContent: "flex-end", padding: "10px 20px", background: "#f5f5f5" }}>
         <button
           onClick={() => changeLanguage("en")}
           style={{
@@ -70,20 +74,20 @@ export default function App() {
         </button>
       </div>
 
-      {/* 🔝 Navbar */}
+      {/* Navbar */}
       <Navbar />
 
-      {/* 🧭 Routes */}
+      {/* Routes */}
       <Routes>
         {/* Admin Routes */}
-        <Route path="/admin-login" element={<AdminLogin />} />
         <Route
-          path="/admin-dashboard"
-          element={
-            <ProtectedRoute>
-              <AdminDashboard />
-            </ProtectedRoute>
-          }
+          path="/admin/login"
+          element={<AdminLogin setAdminToken={setAdminToken} />}
+        />
+
+        <Route
+          path="/admin/dashboard"
+          element={adminToken ? <DashboardAdmin /> : <Navigate to="/admin/login" />}
         />
 
         {/* User Routes */}

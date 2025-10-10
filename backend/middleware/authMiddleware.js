@@ -1,45 +1,39 @@
 import jwt from "jsonwebtoken";
+import User from "../models/User.js";
+import Admin from "../models/Admin.js";
 
-const authMiddleware = (roles = []) => {
-  return (req, res, next) => {
-    try {
-      const token = req.headers.authorization?.split(" ")[1];
-      if (!token) return res.status(401).json({ message: "No token provided" });
-
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      req.user = decoded;
-
-      if (roles.length && !roles.includes(decoded.role)) {
-        return res.status(403).json({ message: "Access denied" });
-      }
-
-      next();
-    } catch (error) {
-      res.status(401).json({ message: "Invalid token" });
-    }
-  };
-};
-
-
-
-
-
-export const protect = (req, res, next) => {
+const authMiddleware = (requiredRoles = []) => async (req, res, next) => {
   try {
-    const authHeader = req.headers.authorization || req.headers.Authorization;
+    const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return res.status(401).json({ message: "No token provided" });
+      return res.status(401).json({ success: false, message: "No token provided" });
     }
 
     const token = authHeader.split(" ")[1];
-    if (!token) return res.status(401).json({ message: "No token provided" });
-
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.admin = { id: decoded.id, email: decoded.email };
+
+    let currentUser = null;
+    if (decoded.role === "admin") {
+      currentUser = await Admin.findById(decoded.id);
+    } else {
+      currentUser = await User.findById(decoded.id);
+    }
+
+    if (!currentUser) {
+      return res.status(401).json({ success: false, message: "User not found" });
+    }
+
+    req.user = currentUser;
+
+    // ✅ Check if user's role is allowed
+    if (requiredRoles.length && !requiredRoles.includes(decoded.role)) {
+      return res.status(403).json({ success: false, message: "Access denied" });
+    }
+
     next();
-  } catch (error) {
-    console.error("authMiddleware error:", error.message);
-    return res.status(401).json({ message: "Invalid or expired token" });
+  } catch (err) {
+    console.error("Auth Middleware Error:", err);
+    return res.status(401).json({ success: false, message: "Invalid token" });
   }
 };
 

@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 
 export default function Signup() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -14,7 +15,6 @@ export default function Signup() {
   });
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState("");
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { id, value, type, checked } = e.target;
@@ -60,14 +60,16 @@ export default function Signup() {
       if (res.ok) {
         setMessage(t("signupSuccess"));
         setErrors({});
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("role", data.role);
-        localStorage.setItem("name", data.name);
+        // Save only token if backend provides it (optional)
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("role", data.role);
+          localStorage.setItem("name", data.name);
+        }
 
+        // Redirect user after signup
         setTimeout(() => {
-          if (data.role === "reader") navigate("/dashboard/reader");
-          else if (data.role === "reporter") navigate("/dashboard/reporter");
-          else if (data.role === "media") navigate("/dashboard/media");
+          navigate("/login");
         }, 1500);
       } else {
         setErrors({ server: data.message || t("serverError") });
@@ -80,6 +82,7 @@ export default function Signup() {
   return (
     <section className="h-screen">
       <div className="h-full flex flex-wrap items-center justify-center lg:justify-between">
+        {/* Left Side Image */}
         <div className="shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 lg:w-6/12 xl:w-6/12">
           <img
             src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
@@ -88,6 +91,7 @@ export default function Signup() {
           />
         </div>
 
+        {/* Signup Form */}
         <div className="mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12">
           <form onSubmit={handleSubmit}>
             {/* Name */}
@@ -100,7 +104,10 @@ export default function Signup() {
                 placeholder={t("fullName")}
                 className="peer block w-full rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-transparent focus:border-indigo-600 focus:ring focus:ring-indigo-300 focus:outline-none"
               />
-              <label htmlFor="name" className="absolute left-3 top-1 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:-top-1 peer-focus:text-indigo-600 peer-focus:text-sm">
+              <label
+                htmlFor="name"
+                className="absolute left-3 top-1 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:-top-1 peer-focus:text-indigo-600 peer-focus:text-sm"
+              >
                 {t("fullName")}
               </label>
               {errors.name && <p className="mt-1 text-red-600 text-sm">{errors.name}</p>}
@@ -116,7 +123,10 @@ export default function Signup() {
                 placeholder={t("emailAddress")}
                 className="peer block w-full rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-transparent focus:border-indigo-600 focus:ring focus:ring-indigo-300 focus:outline-none"
               />
-              <label htmlFor="email" className="absolute left-3 top-1 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:-top-1 peer-focus:text-indigo-600 peer-focus:text-sm">
+              <label
+                htmlFor="email"
+                className="absolute left-3 top-1 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:-top-1 peer-focus:text-indigo-600 peer-focus:text-sm"
+              >
                 {t("emailAddress")}
               </label>
               {errors.email && <p className="mt-1 text-red-600 text-sm">{errors.email}</p>}
@@ -132,7 +142,10 @@ export default function Signup() {
                 placeholder={t("password")}
                 className="peer block w-full rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-transparent focus:border-indigo-600 focus:ring focus:ring-indigo-300 focus:outline-none"
               />
-              <label htmlFor="password" className="absolute left-3 top-1 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:-top-1 peer-focus:text-indigo-600 peer-focus:text-sm">
+              <label
+                htmlFor="password"
+                className="absolute left-3 top-1 text-gray-500 text-sm transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-focus:-top-1 peer-focus:text-indigo-600 peer-focus:text-sm"
+              >
                 {t("password")}
               </label>
               {errors.password && <p className="mt-1 text-red-600 text-sm">{errors.password}</p>}
@@ -147,9 +160,9 @@ export default function Signup() {
                 className="block w-full rounded border border-gray-300 px-3 py-2 text-gray-900 focus:border-indigo-600 focus:ring focus:ring-indigo-300 focus:outline-none"
               >
                 <option value="" disabled>{t("selectRole")}</option>
-                <option value="reader">{t("roleReader")}</option>
-                <option value="reporter">{t("roleReporter")}</option>
-                <option value="media">{t("roleMedia")}</option>
+                <option value="reader">{t("Reader")}</option>
+                <option value="reporter">{t("Reporter")}</option>
+                <option value="media">{t("Media")}</option>
               </select>
               {errors.role && <p className="mt-1 text-red-600 text-sm">{errors.role}</p>}
             </div>
@@ -157,7 +170,13 @@ export default function Signup() {
             {/* Terms */}
             <div className="mb-6 flex items-center justify-between">
               <label className="inline-flex items-center">
-                <input type="checkbox" id="terms" checked={formData.terms} onChange={handleChange} className="h-4 w-4 text-indigo-600"/>
+                <input
+                  type="checkbox"
+                  id="terms"
+                  checked={formData.terms}
+                  onChange={handleChange}
+                  className="h-4 w-4 text-indigo-600"
+                />
                 <span className="ml-2 text-sm text-gray-600">{t("rememberMe")}</span>
               </label>
               <a href="#!" className="text-indigo-600 hover:underline">{t("terms")}</a>
@@ -170,7 +189,10 @@ export default function Signup() {
 
             {/* Register Button */}
             <div className="text-center lg:text-left">
-              <button type="submit" className="inline-block w-full rounded bg-indigo-600 px-7 pb-2 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-indigo-700">
+              <button
+                type="submit"
+                className="inline-block w-full rounded bg-indigo-600 px-7 pb-2 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-indigo-700"
+              >
                 {t("register")}
               </button>
               <p className="mb-0 mt-2 pt-1 text-sm font-semibold">
