@@ -142,17 +142,32 @@ export default function TrendingStories() {
                   <div key={item._id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition transform hover:-translate-y-1 flex flex-col">
                     {item.image && (
                       <div className="relative w-full h-56">
-                        <img src={item.image} alt={item.title[lang] || "News"} className="w-full h-full object-cover" />
+                        <img
+                          src={
+                            item.image.startsWith("http")
+                              ? item.image
+                              : `http://localhost:5000/${item.image}`
+                          }
+                          alt={item.title[lang] || "News"}
+                          className="w-full h-full object-cover"
+                        />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                       </div>
                     )}
+
                     <div className="p-5 flex flex-col flex-grow">
                       <h3 className="text-xl font-semibold text-gray-800 mb-2 hover:text-teal-600 transition">
-                        {item.title[lang] || item.title.en || item.title.hi}
+                        {typeof item.title === "object"
+                          ? item.title[lang] || item.title.en || item.title.hi
+                          : item.title}
                       </h3>
+
                       <p className="text-gray-600 flex-grow">
-                        {item.description[lang] || item.description.en || item.description.hi}
+                        {typeof item.description === "object"
+                          ? item.description[lang] || item.description.en || item.description.hi
+                          : item.description}
                       </p>
+
                       <div className="mt-3 flex justify-between items-center text-gray-400 text-sm">
                         <span>{new Date(item.createdAt).toLocaleDateString()}</span>
                         <span className="font-medium text-teal-600">{item.createdBy?.name || "User"}</span>

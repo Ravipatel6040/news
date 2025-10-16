@@ -12,6 +12,7 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import newsRoutes from "./routes/newsRoutes.js";
+import categoryRoutes from "./routes/categoryRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -36,6 +37,7 @@ connectDB()
 app.use("/api/auth", authRoutes);       // User signup/login
 app.use("/api/admin", adminRoutes);     // Admin routes
 app.use("/api/news", newsRoutes);       // News routes (add/approve)
+app.use("/api/categories", categoryRoutes);
 
 // Default route
 app.get("/", (req, res) => {

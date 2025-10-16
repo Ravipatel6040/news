@@ -99,3 +99,4 @@ export const approveNews = async (req, res) => {
     res.status(500).json({ success: false, message: "Error updating news status" });
   }
 };
+

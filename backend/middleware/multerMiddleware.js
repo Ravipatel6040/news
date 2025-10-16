@@ -33,3 +33,8 @@ const fileFilter = (req, file, cb) => {
 
 // Export multer instance
 export const uploadNewsImage = multer({ storage, fileFilter });
+
+
+
+
+

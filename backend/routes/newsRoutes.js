@@ -40,3 +40,6 @@ router.get("/pending", authMiddleware("admin"), getPendingNews);
 router.patch("/approve/:newsId", authMiddleware("admin"), approveNews);
 
 export default router;
+
+
+
