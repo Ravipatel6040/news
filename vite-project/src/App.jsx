@@ -11,6 +11,7 @@ import NewsFeedPage from "./pages/NewsFeedPage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import AddNews from "./pages/AddNews";
+import NewsDetail from "./pages/NewsDetail";
 
 import AdminLogin from "./pages/AdminLogin"; 
 import DashboardAdmin from "./pages/dashboard/DashboardAdmin";
@@ -98,6 +99,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/add-news" element={<AddNews />} />
+         <Route path="/news/:id" element={<NewsDetail />} />
 
         {/* Role-based dashboards */}
         <Route path="/dashboard/reader" element={<DashboardReader />} />

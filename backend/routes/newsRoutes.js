@@ -7,7 +7,7 @@ import {
 } from "../controllers/newsController.js";
 import authMiddleware from "../middleware/authMiddleware.js";
 import { uploadNewsImage } from "../middleware/multerMiddleware.js";
-
+import { getSingleNews } from "../controllers/newsController.js";
 const router = express.Router();
 
 /**
@@ -35,6 +35,8 @@ router.get("/approved", getApprovedNews);
 
 // Get pending news for approval - Admin only
 router.get("/pending", authMiddleware("admin"), getPendingNews);
+// ✅ Get single news by ID
+router.get("/:id", getSingleNews);
 
 // Approve or reject news - Admin only
 router.patch("/approve/:newsId", authMiddleware("admin"), approveNews);

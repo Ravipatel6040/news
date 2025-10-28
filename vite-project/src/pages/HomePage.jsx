@@ -6,6 +6,7 @@ import FeaturesHighlight from "../components/FeaturesHighlight";
 import Footer from "../components/Footer";
 import FAQ from "../components/Faq"
 import CTA from "../components/CTA"
+import UserNewsSection from "../components/UserNewsSection";
 
 export default function HomePage() {
   return (
@@ -15,6 +16,9 @@ export default function HomePage() {
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
           <TrendingStories />
+        </section>
+         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+          <UserNewsSection/>
         </section>
 
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">

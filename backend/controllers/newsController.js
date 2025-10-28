@@ -1,24 +1,16 @@
 import News from "../models/News.js";
 
-// 📰 User adds news (Pending by default)
+// 📰 Add News (Pending by default)
 export const addNews = async (req, res) => {
   try {
-    const { title_en, title_hi, description_en, description_hi } = req.body;
-
-    // ✅ No required validation, allow empty fields
+    const { title, description } = req.body; // now plain strings
     const image = req.file ? req.file.path : "";
 
     const news = new News({
-      title: {
-        en: title_en || "",
-        hi: title_hi || "",
-      },
-      description: {
-        en: description_en || "",
-        hi: description_hi || "",
-      },
+      title: title || "",
+      description: description || "",
       image,
-      createdBy: req.user?._id || null, // allow optional user
+      createdBy: req.user?._id || null, // optional user
       status: "pending",
     });
 
@@ -100,3 +92,20 @@ export const approveNews = async (req, res) => {
   }
 };
 
+
+
+export const getSingleNews = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const news = await News.findById(id);
+
+    if (!news) {
+      return res.status(404).json({ success: false, message: "News not found" });
+    }
+
+    res.json({ success: true, news });
+  } catch (error) {
+    console.error("Error fetching news:", error);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};

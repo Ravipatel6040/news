@@ -1,26 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { IoHeartOutline, IoPersonOutline, IoPricetagsOutline } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 
 export default function TrendingStories() {
-  const { t, i18n } = useTranslation();
-  const lang = i18n.language;
-  const [userNews, setUserNews] = useState([]);
-
-  // Fetch approved user news from backend
-  useEffect(() => {
-    const fetchApprovedNews = async () => {
-      try {
-        const res = await fetch("http://localhost:5000/api/news/approved");
-        const data = await res.json();
-        if (data.success) setUserNews(data.news);
-      } catch (err) {
-        console.error("Error fetching approved news:", err);
-      }
-    };
-
-    fetchApprovedNews();
-  }, []);
+  const { t } = useTranslation();
 
   const rightStories = [
     { img: "...", titleKey: "story1Title" },
@@ -47,15 +30,24 @@ export default function TrendingStories() {
             <a href="#">
               <div
                 className="bg-cover bg-center h-64 md:h-80 rounded-lg overflow-hidden"
-                style={{ backgroundImage: "url('https://api.time.com/wp-content/uploads/2020/07/never-trumpers-2020-election-01.jpg')" }}
+                style={{
+                  backgroundImage:
+                    "url('https://api.time.com/wp-content/uploads/2020/07/never-trumpers-2020-election-01.jpg')",
+                }}
                 title={t("bigStoryTitle")}
               />
             </a>
             <div className="mt-3 bg-white rounded-b-lg p-4 shadow">
-              <a href="#" className="text-xs text-indigo-600 uppercase font-medium hover:text-gray-900">
+              <a
+                href="#"
+                className="text-xs text-indigo-600 uppercase font-medium hover:text-gray-900"
+              >
                 {t("bigStoryCategory")}
               </a>
-              <a href="#" className="block text-gray-900 font-bold text-2xl my-2 hover:text-indigo-600">
+              <a
+                href="#"
+                className="block text-gray-900 font-bold text-2xl my-2 hover:text-indigo-600"
+              >
                 {t("bigStoryTitle")}
               </a>
               <p className="text-gray-700">{t("bigStoryDesc")}</p>
@@ -73,7 +65,10 @@ export default function TrendingStories() {
                     title={t(story.titleKey)}
                   />
                 </a>
-                <a href="#" className="block text-gray-900 font-semibold mt-2 hover:text-indigo-600">
+                <a
+                  href="#"
+                  className="block text-gray-900 font-semibold mt-2 hover:text-indigo-600"
+                >
                   {t(story.titleKey)}
                 </a>
               </div>
@@ -82,7 +77,7 @@ export default function TrendingStories() {
         </div>
       </div>
 
-      {/* ===================== News Feed Section ===================== */}
+      {/* ===================== Side News Section ===================== */}
       <div className="w-full py-10 bg-gray-50">
         <div className="max-w-screen-xl mx-auto px-6 md:px-16">
           <span className="text-md md:text-lg font-bold text-teal-700 flex items-center gap-2">
@@ -102,10 +97,16 @@ export default function TrendingStories() {
               />
               <div className="p-6 flex flex-col gap-4">
                 <div className="flex gap-4 text-gray-700 text-sm font-semibold">
-                  <span className="flex items-center gap-1"><IoPersonOutline /> {t("byAdmin")}</span>
-                  <span className="flex items-center gap-1"><IoPricetagsOutline /> {t("siteNews")}</span>
+                  <span className="flex items-center gap-1">
+                    <IoPersonOutline /> {t("byAdmin")}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <IoPricetagsOutline /> {t("siteNews")}
+                  </span>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-semibold text-teal-900">{t("latestUpdatesTitle")}</h3>
+                <h3 className="text-2xl md:text-3xl font-semibold text-teal-900">
+                  {t("latestUpdatesTitle")}
+                </h3>
                 <p className="text-gray-600">{t("latestUpdatesDesc")}</p>
               </div>
             </div>
@@ -113,70 +114,33 @@ export default function TrendingStories() {
             {/* Side News */}
             <div className="lg:w-1/3 flex flex-col gap-6">
               {sideNews.map((news, idx) => (
-                <div key={idx} className="flex flex-col sm:flex-row bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
-                  <div className={`p-4 sm:p-6 text-white flex flex-col items-center justify-center ${news.color}`}>
+                <div
+                  key={idx}
+                  className="flex flex-col sm:flex-row bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition"
+                >
+                  <div
+                    className={`p-4 sm:p-6 text-white flex flex-col items-center justify-center ${news.color}`}
+                  >
                     <span className="text-3xl md:text-5xl font-bold">03</span>
                     <span className="font-semibold">October</span>
                   </div>
                   <div className="p-4 flex flex-col justify-between">
                     <div className="flex gap-4 text-sm text-gray-700 font-semibold mb-2">
-                      <span className="flex items-center gap-1"><IoPersonOutline /> {t("byAdmin")}</span>
-                      <span className="flex items-center gap-1"><IoPricetagsOutline /> {t("siteNews")}</span>
+                      <span className="flex items-center gap-1">
+                        <IoPersonOutline /> {t("byAdmin")}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <IoPricetagsOutline /> {t("siteNews")}
+                      </span>
                     </div>
-                    <h3 className="text-xl md:text-2xl font-semibold text-teal-900">{t(news.titleKey)}</h3>
+                    <h3 className="text-xl md:text-2xl font-semibold text-teal-900">
+                      {t(news.titleKey)}
+                    </h3>
                     <p className="text-gray-600">{t(news.descKey)}</p>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* ===================== User Added News ===================== */}
-          <div className="mt-16">
-            <h2 className="text-3xl font-bold text-teal-700 text-center mb-10">📰 {t("userAddedNews")}</h2>
-            {userNews.length === 0 ? (
-              <p className="text-center text-gray-500">{t("noUserNews")}</p>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {userNews.map((item) => (
-                  <div key={item._id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition transform hover:-translate-y-1 flex flex-col">
-                    {item.image && (
-                      <div className="relative w-full h-56">
-                        <img
-                          src={
-                            item.image.startsWith("http")
-                              ? item.image
-                              : `http://localhost:5000/${item.image}`
-                          }
-                          alt={item.title[lang] || "News"}
-                          className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                      </div>
-                    )}
-
-                    <div className="p-5 flex flex-col flex-grow">
-                      <h3 className="text-xl font-semibold text-gray-800 mb-2 hover:text-teal-600 transition">
-                        {typeof item.title === "object"
-                          ? item.title[lang] || item.title.en || item.title.hi
-                          : item.title}
-                      </h3>
-
-                      <p className="text-gray-600 flex-grow">
-                        {typeof item.description === "object"
-                          ? item.description[lang] || item.description.en || item.description.hi
-                          : item.description}
-                      </p>
-
-                      <div className="mt-3 flex justify-between items-center text-gray-400 text-sm">
-                        <span>{new Date(item.createdAt).toLocaleDateString()}</span>
-                        <span className="font-medium text-teal-600">{item.createdBy?.name || "User"}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
         </div>
       </div>
